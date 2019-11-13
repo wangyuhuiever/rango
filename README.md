@@ -1,0 +1,2 @@
+# rango
+django practice
