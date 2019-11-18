@@ -1,9 +1,11 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
 
 def index(request):
-    return HttpResponse('balabalabala<br/><a href="/rango/about/">about page</a>')
+    context_dict = {'boldmessage': "index page"}
+    return render(request, 'rango/index.html', context=context_dict)
 
 
 def about(request):
-    return HttpResponse('about page<br/><a href="/rango/">index page</a>')
+    context_dict = {'name': 'yuhui'}
+    return render(request, 'rango/about.html', context=context_dict)
