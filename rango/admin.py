@@ -2,13 +2,14 @@ from django.contrib import admin
 from rango.models import Category, Page
 
 
-class PageInLine(admin.StackedInline):
-    model = Page
-    extra = 3
+# class PageInLine(admin.StackedInline):
+#     model = Page
+#     extra = 3
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    inlines = [PageInLine]
+    # inlines = [PageInLine]
+    prepopulated_fields = {'slug': ('name',)}
 
 
 class PageAdmin(admin.ModelAdmin):

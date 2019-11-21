@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Rango</title>
-{#    <link rel="stylesheet" href="{% static 'css/base.css' %}"/>#}
-{#    <script src="{% static 'js/jquery.js' %}"></script>#}
+    {#    <link rel="stylesheet" href="{% static 'css/base.css' %}"/>#}
+    {#    <script src="{% static 'js/jquery.js' %}"></script>#}
 </head>
 <body>
 <h1>rango says...</h1>
@@ -13,9 +13,33 @@
     hey! partner!<br/>
     <strong>{{ boldmessage }}</strong><br/>
 </div>
+
+<h2>Most Liked Categories</h2>
+{% if categoires %}
+    <ol>
+        {% for category in categoires %}
+            <li><a href="{% url 'rango:show_category' category.slug %}">{{ category.name }}</a> </li>
+        {% endfor %}
+    </ol>
+{% else %}
+    <strong>There are not categories present.</strong>
+{% endif %}
+
+<h2>Most Viewd Pages</h2>
+{% if pages %}
+    <ol>
+        {% for page in pages %}
+            <li><a href="{{ page.url }}">{{ page.title }}</a> </li>
+        {% endfor %}
+
+    </ol>
+{% else %}
+    <strong>There are not pages present.</strong>
+{% endif %}
+
 <div>
-    <a href="/rango/about">About</a><br/>
-    <img src="{% static 'images/wallpaper.jpg' %}" alt="Picture of Wallpaper" >
+    <a href="{% url 'rango:about' %}">About</a><br/>
+    <img src="{% static 'images/wallpaper.jpg' %}" alt="Picture of Wallpaper">
 </div>
 </body>
 </html>
